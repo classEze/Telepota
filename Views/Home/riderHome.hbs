@@ -1,0 +1,44 @@
+       
+    {{#section 'header'}}
+<link rel="stylesheet" href="/css/home_styles.css">
+    {{/section}} 
+
+    
+    <main>
+    <div class="main grid_display">
+        <section class="search_area">  
+            <form action="" class="request_form">
+                <div class="search_wrapper">
+                    <input type="text" class="pick_up" placeholder='Enter pick up location' name='pick_up'>
+                </div>
+                <div class="search_wrapper">
+                    <input type="text" class="destination" placeholder='Enter destination location'  name='destination'>
+                </div>
+                <div class="button_wrapper">
+                    <button type='submit' class="submit"> Request Ride</button>
+                </div>
+            </form>
+        </section>
+        <section class="map_area">
+            <div class="map_div">
+            </div>
+            
+        <div class="search_info hide">
+           <span class="close">x</span>
+            <h1 class="distance"></h1>
+            <h1 class="time"></h1>
+            <h1 class="price"></h1>
+        </div>
+        </section>
+    </div>
+    </main>
+
+
+    {{#section 'footer'}}
+    <script src="/js/subscribe.js"></script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCw-rypAWlPW5Vhds1rwkYI8VSaqS5PKx8&libraries=places"></script>
+    <script src="/js/map.js"></script>
+    <script src="/js/calculator.js"></script>
+    {{/section}} 
+
+

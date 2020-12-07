@@ -1,0 +1,28 @@
+    {{#section 'header'}}
+        <link rel="stylesheet" href="/css/login.css">
+    {{/section}}
+    <div>
+  <section class="lwrapper">
+        <h1 style="text-align:center">ADMIN LOGIN</h1>
+        <p class="please">*please input registered email and password</p>
+        <form method='post' action='/login/admin'>
+            <input type='hidden' name='whoyoube' value='admin'/>
+            <div class='field'>
+                <label htmlFor='username'> Email:</label>
+                <input type='text' id='username'/>
+            </div>
+            <div class='field'>
+                <label htmlFor='password'> Password:</label>
+                <input type='password' id='password'/>
+            </div>
+            <div class='field'>
+                <label></label>
+                <button type='submit'>Login</button>
+            </div>
+        </form>
+            <p class="extra"> don't have an account? <a href='/signup/admin'> Sign up here</a></p>
+    </div>
+  </section>  
+      </div>
+
+

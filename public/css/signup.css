@@ -1,0 +1,49 @@
+.swrapper{
+    width:95%;
+    margin:0 auto;
+    border:4px solid red;
+}
+
+section.fields_wrapper{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+}
+
+div.sfield{
+    display:grid;
+    grid-template-columns: 1fr;
+    width:350px;
+    max-width:90vw;
+}
+label{
+    justify-self: center;
+}
+input{
+    height:60px;
+    text-align: center;
+    width:100%
+}
+.button_wrapper{
+    text-align: center;
+}
+button{
+    margin-top: 10px;
+    height: 50px;
+    width:350px;
+    max-width:96vw;
+    color: white;
+    background-color: var(--darkBlue);
+    font-size: var(--mediumFont);
+}
+@media screen and (max-width:1160px){
+    section.fields_wrapper{
+    grid-template-columns:repeat(2, 1fr)
+    }
+}
+@media screen and (max-width:770px){
+    section.fields_wrapper{
+        grid-template-columns: 1fr
+    }
+}
