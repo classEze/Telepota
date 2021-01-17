@@ -1,3 +1,6 @@
 node_modules
 .env
-map.js
+riderHome.hbs
+driverHome.hbs
+
+

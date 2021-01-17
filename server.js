@@ -4,14 +4,12 @@ const dotenv=require('dotenv').config()
 const mongoose=require('mongoose')
 const cookieParser=require('cookie-parser')
 
-//Import My modules
-
 const app=express();
 const port=process.env.PORT || 7000
 
 
 //MONGOOSE CONNECTION
-mongoose.connect('mongodb://localhost/Telepot', {useCreateIndex:true, useUnifiedTopology:true, useNewUrlParser:true, useFindAndModify:false})
+mongoose.connect( process.env.CONNECTION_STRING, {useCreateIndex:true, useUnifiedTopology:true, useNewUrlParser:true, useFindAndModify:false})
 .then(()=>{
     console.log('Connected Succesfully')
     app.listen(port, console.log('Server Started on port ' + port));
@@ -25,6 +23,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(express.static('public'));
 app.use(cookieParser())
+app.use((req,res,next)=>{
+    req.cookies.ifewejibaye?res.locals.isAuthenticated = true : res.locals.isAuthenticated = false;
+    next();
+})
 
 
 //HANDLEBARS
@@ -57,6 +59,13 @@ app.use('/signup', require('./Routes/signupRoutes'))
 
 app.use('/subscribe', require('./Routes/subRoutes'))
 
+app.use('/location', require('./Routes/locationRoutes'))
+
+app.use('/availability', require('./Routes/availabilityRoutes'))
+
+app.use('/ride', require('./Routes/rideRoutes'))
+
+app.use('/logout', require('./Routes/logoutRoutes'))
 
 app.use((req,res,next)=>res.status(404).json({message:'404, no such page'}))
 

@@ -1,0 +1,21 @@
+{
+    "name":"Telepot",
+    "short_name":"TP",
+    "start_url":"/",
+    "display":"standalone",
+    "theme_color":"#660011",
+    "background_color":"#eeeeee",
+    "orientation":"portrait-primary",
+    "icons":
+    [
+        {"src":"/images/icon1.png", "type":"image/png", "sizes":"72x72" },
+        {"src":"/images/icon2.png", "type":"image/png", "sizes":"96x96" },
+        {"src":"/images/icon3.png", "type":"image/png", "sizes":"128x128" },
+        {"src":"/images/icon4.png", "type":"image/png", "sizes":"144x144" },
+        {"src":"/images/icon5.png", "type":"image/png", "sizes":"152x152" },
+        {"src":"/images/icon6.png", "type":"image/png", "sizes":"192x192" },
+        {"src":"/images/icon7.png", "type":"image/png", "sizes":"384x384" },
+        {"src":"/images/icon8.png", "type":"image/png", "sizes":"512x512" }
+    ]
+
+}

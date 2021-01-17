@@ -5,15 +5,15 @@
   <section class="lwrapper">
         <h1 style="text-align:center">DRIVER LOGIN</h1>
         <p class="please">*please input registered email and password</p>
-        <form method='post' action='/login/driver'>
-            <input type='hidden' name='whoyoube' value='driver'/>
+        <form method='POST' action='/login/driver'>
+            <input type='hidden' name='role' value='Driver'/>
             <div class='field'>
-                <label htmlFor='username'> Email:</label>
-                <input type='text' id='username'/>
+                <label htmlFor='email'> Email:</label>
+                <input type='email' id='email' name='email'/>
             </div>
             <div class='field'>
                 <label htmlFor='password'> Password:</label>
-                <input type='password' id='password'/>
+                <input type='password' id='password' name='password'/>
             </div>
             <div class='field'>
                 <label></label>

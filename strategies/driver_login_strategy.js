@@ -23,15 +23,29 @@ passport.use(new localStrategy({usernameField:"email"}, async (email,password, d
         }
     }
     else{
-        console.log('Egwa ekete, No found User')
+        console.log('Egwa ekete, No found User, driver')
         return done(null,false)
     }
         }
 catch(error){
-    console.log(error)
+    console.log('Error', error)
     return done(error, false)
 }
 })
 )
 
-module.exports=passport
+router.get('/', (req,res)=>res.render('Login/driverLogin'))
+
+router.post('/', passport.authenticate('local', {session:false, failureRedirect:'/login/driver'}),
+async (req,res)=>{
+    const sub={id:req.user._id, role:req.user.role}
+
+    const token= await jwt.sign(sub, process.env.JWT_SECRET);
+
+    res.cookie('ifewejibaye', token, {httpOnly:true, maxAge:1000*60*60*24*15})
+
+    res.redirect('/home/driver')
+})
+
+
+module.exports=router

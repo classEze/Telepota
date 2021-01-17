@@ -6,7 +6,10 @@ navigator.serviceWorker.ready.then(reg=>{
     reg.pushManager.getSubscription().then(existing_sub=>{
 
         //if user already subscribed
-        if(existing_sub) return send_sub(existing_sub)
+        if(existing_sub){
+            console.log("Existing Sub:", existing_sub)
+            return send_sub(existing_sub)
+        } 
 
         //if there is no existing sub
         handle_new_sub(reg)
@@ -16,14 +19,13 @@ navigator.serviceWorker.ready.then(reg=>{
 //function to send sub to the server
 async function send_sub(sub){
     try{
-        const sub_sent=await fetch('/subscribe/rider',
+        const sub_sent=await fetch('/subscribe/user',
         {
             method:"post",
              headers:{'content-type':'application/json'},
              body:JSON.stringify({sub}),
              withCredentials:true
            })
-           console.log('Existing Sub Saved', sub)
           const parsed= await sub_sent.json();
            console.log(parsed.msg, parsed.sub)
            return;

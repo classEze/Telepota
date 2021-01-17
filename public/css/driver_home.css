@@ -1,0 +1,15 @@
+.grid_display{
+    display: grid;
+}
+.trully{
+background-color: var(--darkBlue);
+}
+section.button_area{
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+}
+button.status{
+height:59px;
+color:white;
+font-size: var(--mediumFonts);
+}

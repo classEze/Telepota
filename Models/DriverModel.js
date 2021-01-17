@@ -17,19 +17,17 @@ const GeoSchema=new Schema({
 
 
 const DriverSchema=new Schema({
-    driver_id:{type:Number, autoIndex:true},
-    surname:{type:String, required:true},
-    firstname:{type:String, required:true},
+    name:{type:String, required:true},
     role:{type:String, default:"Driver"},
-    username:{type:String, required:true, unique:true},
     password:{type:String, required:true},
     email:{type:String, unique:true, required:true},
-    vehicle_type:{type:String, required:true},
-    phone:{type:Number, required:true, unique:true},
+    available:{type:String, default:false},
+    car:String,
+    plate:{type:String, required:true},
+    phone:{type:String, required:true, unique:true},
     address:{type:String, required:true},
-    plate_number:{type:String, required:true},
     subscription:{type:SubSchema},
-    location:{type:GeoSchema, required:true, index:'2dsphere'}
+    location:{type:GeoSchema, index:'2dsphere'}
 
 },
 

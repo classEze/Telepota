@@ -4,6 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="manifest" href="/manifest.json">
+    <link rel='apple-touch-icon' src='/images/icon6.png'>
+    <link rel='apple-mobile-web-status-bar' content='#eee'>
+    <meta name="theme-color" content='#eee'>
     {{{_sections.header}}}
     <title>Telepota</title>
 </head>
@@ -11,25 +14,29 @@
     <header class="header  grid_display">
         <h1><a href='/'> Telepota </a></h1>
         <nav class="nav_wrapper grid_display"> 
-            <span class="brand_name"> Telepota </span>
-            <ul class="nav_list"> 
-                {{!-- {{isLoggedin?}} --}}
+            <span class="brand_logo"> <img src="/images/icon1.png" alt="Telepot" srcset=""> </span>
+            <ul class="nav_list">
+                {{#if isAuthenticated}}
                  <li class="nav_item"><a> Request</a></li>
-                <li class="nav_item"><a> Logout </a></li>
-                {{!-- {{/}} --}}
+                <li class="nav_item"><a href='/logout/user'> Logout </a></li>
+                {{else}}
                 <li class="nav_item"><a href='/signup'> Sign Up</a></li>
                 <li class="nav_item"><a href='/login'> Login  </a></li>
+                {{/if}}
                 <li class="nav_item"><a> About  </a></li>
-                <li class="nav_item"><a> FAQ   </a></li>
+                <li class="nav_item"><a> FAQ </a></li>
             </ul>
         </nav>
     </header>
     {{{body}}}
         <footer class="footer grid_display">
-       <p> &copy Telepota 2020.</p>
+       <p> &copy Telepota 2021.</p>
     </footer>
     <script src="/js/register_worker.js"></script>
    {{{_sections.footer}}}
+     <script>
+    document.querySelector("a[href='/logout/user']").addEventListener('click', e=>localStorage.setItem('available', null))
+  </script>
 </body>
 </html>
 

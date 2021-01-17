@@ -4,10 +4,7 @@ const bcrypt=require('bcrypt')
 const schema=mongoose.Schema;
 
 const AdminSchema=new schema({
-    admin_id:{type:Number, autoIndex:true},
-    surname:{type:String, required:true},
-    firstname:{type:String, required:true},
-    username:{type:String, required:true, unique:true},
+    name:{type:String, required:true},
     password:{type:String, required:true},
     email:{type:String, unique:true, required:true},
     phone:{type:String, required:true, unique:true},

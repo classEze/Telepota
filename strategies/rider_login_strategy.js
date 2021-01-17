@@ -1,5 +1,3 @@
-const passport=require('passport')
-const localStrategy=require('passport-local').Strategy;
 const router=require('express').Router();
 const bcrypt=require('bcrypt')
 
@@ -13,7 +11,8 @@ passport.use(new localStrategy({usernameField:"email"}, async (email,password, d
     try{
         const foundUser = await RiderModel.findOne({email})
         if(foundUser){
-            if(await isPasswordCorrect(password, foundUser.password)) return done(null, foundUser)
+            if(await isPasswordCorrect(password, foundUser.password)) 
+            return done(null, foundUser)
 
             else{
                 console.log('invalid Credentials')
@@ -21,7 +20,7 @@ passport.use(new localStrategy({usernameField:"email"}, async (email,password, d
         }
     }
     else{
-        console.log('Egwa ekete, No found User')
+        console.log('Egwa ekete, No found User, rider')
         return done(null,false)
     }
         }
@@ -30,5 +29,20 @@ catch(error){
 }
 })
 )
+router.get('/', (req,res)=>res.render('Login/riderLogin'))
 
-module.exports=passport
+router.post('/',
+    passport.authenticate('local', {session:false, failureRedirect:'/login/rider'}) ,
+
+async (req,res)=>{
+    const sub={id:req.user._id, role:req.user.role}
+
+    const token= await jwt.sign(sub, process.env.JWT_SECRET);
+
+    res.cookie('ifewejibaye', token, {httpOnly:true, maxAge:1000*60*60*24*15})
+
+    res.redirect('/home/rider')
+}
+)
+
+module.exports=router

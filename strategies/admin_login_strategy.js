@@ -22,7 +22,7 @@ passport.use(new localStrategy({usernameField:"email"}, async (email,password, d
         }
     }
     else{
-        console.log('Egwa ekete, No found User')
+        console.log('Egwa ekete, No found User, admin')
         return done(null,false)
     }
         }
@@ -32,5 +32,18 @@ catch(error){
 }
 })
 )
+router.get('/', (req,res)=>res.render('Login/adminLogin'))
 
-module.exports=passport
+router.post('/', passport.authenticate('local', {session:false, failureRedirect:'/login/admin'}),
+
+async (req,res)=>{
+    const sub={id:req.user._id, role:req.user.role}
+
+    const token= await jwt.sign(sub, process.env.JWT_SECRET);
+
+    res.cookie('ifewejibaye', token, {httpOnly:true, maxAge:1000*60*60*24*15})
+
+    res.redirect('/home/admin')
+} )
+
+module.exports=router

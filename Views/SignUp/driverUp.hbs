@@ -15,32 +15,38 @@
 <div class="sfield">
     <label for=""> Address</label>
     <input type="text" required name="address" id="address" class="stext">
-
 </div>
 <div class="sfield">
 <label for=""> Email</label>
     <input type="text" required name="email" id="email" class="stext">
-
 </div>
+
 <div class="sfield">
-<label for=""> Phone</label>
-    <input type="number" required name="phone" id="phone" class="stext">
+<label for=""> Password</label>
+    <input type="password" required name="password" id="password" class="stext">
+</div>
+
+<div class="sfield">
+<label for=""> Phone e.g +2348100022284</label>
+    <input type="tel" required name="phone" id="phone" class="stext">
 
 </div>
 <div class="sfield">
 <label for=""> Car </label>
     <input type="text" required name="car" id="car" class="stext">
 </div>
+<div class="sfield">
+<label for=""> Plate number </label>
+    <input type="text" required name="plate" id="plate" class="stext">
+</div>
     </section>
 
 <div class="button_wrapper">
     <button class="submit">Submit</button>
 </div>
-
     </form>
 </main>
 
-
-<script type="text/javascript">
-
-</script>
+{{#section 'footer'}}
+<script src="/js/validate.js"></script>
+{{/section}}
